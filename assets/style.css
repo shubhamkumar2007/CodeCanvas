@@ -71,6 +71,7 @@
         .mobile-menu-btn { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
         .mobile-menu-btn span { width: 25px; height: 3px; background: var(--text); transition: all var(--transition); }
         .mobile-menu { display: none; position: fixed; top: 70px; left: 0; width: 100%; background: var(--bg); border-bottom: 1px solid var(--border); flex-direction: column; padding: 1rem 2rem; z-index: 999; }
+        .mobile-menu.show { display: flex; }
         .mobile-menu a { padding: 0.8rem 0; font-weight: 500; }
 
         .page-section { display: none; padding: 2rem 0; }
