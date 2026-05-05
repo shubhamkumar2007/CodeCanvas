@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="CodeCanvas — A premium interactive computer science e-learning platform. Master DSA, OS, Networks, DBMS, AI & more with hands-on projects.">
+    <meta name="keywords" content="computer science, e-learning, coding, DSA, algorithms, AI, database, operating systems, networks, online courses">
+    <meta name="author" content="CodeCanvas">
+    <meta property="og:title" content="CodeCanvas | CS E-Learning Platform">
+    <meta property="og:description" content="Master computer science with interactive courses, projects, and assessments.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://images.pexels.com/photos/4491918/pexels-photo-4491918.jpeg">
+    <meta property="og:url" content="https://codecanvas.edu">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>CodeCanvas | Premium CS E-Learning</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <div class="loading-screen" id="loadingScreen" aria-hidden="true">
+        <div class="loading-logo">
+            <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                <rect width="60" height="60" rx="16" fill="var(--primary)" />
+                <text x="30" y="38" text-anchor="middle" fill="white" font-family="'Space Grotesk', monospace" font-weight="700" font-size="24">CC</text>
+            </svg>
+        </div>
+        <div class="loading-spinner"></div>
+        <p class="loading-text">Loading your learning space...</p>
+    </div>
+
+    <header class="navbar-sticky" id="navbarSticky" role="banner" aria-label="Main navigation">
+        <div class="container navbar-inner">
+            <a href="#" class="logo-link" aria-label="CodeCanvas Home" onclick="navigateTo('home')">
+                <div class="logo">
+                    <span class="logo-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <rect width="32" height="32" rx="8" fill="var(--primary)" />
+                            <text x="16" y="22" text-anchor="middle" fill="white" font-family="'Space Grotesk', monospace" font-weight="700" font-size="14">CC</text>
+                        </svg>
+                    </span>
+                    <span class="logo-text">CodeCanvas</span>
+                </div>
+            </a>
+            <nav class="nav-links" role="navigation" aria-label="Main links">
+                <a href="#" class="nav-link active" data-page="home" onclick="navigateTo('home')"><i class="fas fa-home"></i> Home</a>
+                <a href="#" class="nav-link" data-page="courses" onclick="navigateTo('courses')"><i class="fas fa-book-open"></i> Courses</a>
+                <a href="#" class="nav-link" data-page="dashboard" onclick="navigateTo('dashboard')"><i class="fas fa-chart-pie"></i> Dashboard</a>
+                <a href="#" class="nav-link nav-link-admin" data-page="admin" onclick="navigateTo('admin')"><i class="fas fa-shield-alt"></i> Admin</a>
+                <a href="#" class="nav-link" onclick="navigateTo('contact'); return false;"><i class="fas fa-envelope"></i> Contact Us</a>
+                <div class="nav-actions">
+                    <button class="btn-icon" id="themeToggle" aria-label="Toggle dark/light mode"><i class="fas fa-moon" id="themeIcon"></i></button>
+                    <button class="btn-icon notification-bell" id="notificationBell" aria-label="Notifications"><i class="fas fa-bell"></i><span class="notification-badge" id="notificationBadge">3</span></button>
+                    <div class="notification-dropdown" id="notificationDropdown">
+                        <div class="notification-header"><h4>Notifications</h4><button class="btn-text-sm" id="clearNotifications">Clear all</button></div>
+                        <div class="notification-list" id="notificationList">
+                            <div class="notification-item unread"><i class="fas fa-star"></i><span>Welcome! Start your first course.</span><small>Just now</small></div>
+                            <div class="notification-item unread"><i class="fas fa-trophy"></i><span>You earned a badge: Quick Starter!</span><small>2h ago</small></div>
+                            <div class="notification-item"><i class="fas fa-clock"></i><span>DSA course progress saved.</span><small>1d ago</small></div>
+                        </div>
+                    </div>
+                    <a href="#" class="btn-primary-sm" id="navLoginBtn" onclick="navigateTo('login'); return false;"><i class="fas fa-user-graduate"></i> Login</a>
+                    <span class="user-greeting" id="navUserGreeting" style="display:none;"></span>
+                </div>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <a href="#" onclick="navigateTo('home')">Home</a>
+        <a href="#" onclick="navigateTo('courses')">Courses</a>
+        <a href="#" onclick="navigateTo('dashboard')">Dashboard</a>
+        <a href="#" onclick="navigateTo('admin')">Admin</a>
+        <a href="#" onclick="closeMobileMenu(); navigateTo('contact');">Contact Us</a>
+        <a href="#" onclick="closeMobileMenu(); navigateTo('login');">Login / Sign Up</a>
+    </div>
+
+    <main id="mainContent" role="main">
+        <!-- DASHBOARD PAGE -->
+        <section class="page-section page-dashboard" id="pageDashboard">
+            <div class="container">
+                <div class="breadcrumb" aria-label="Breadcrumb"><a href="#" onclick="navigateTo('home')">Home</a> <span>/</span> <span>Dashboard</span></div>
+                <div class="dashboard-grid">
+                    <aside class="dashboard-sidebar">
+                        <div class="profile-card">
+                            <img src="https://i.pravatar.cc/120?img=12" alt="Profile" class="profile-avatar" loading="lazy">
+                            <h3 id="dashName">Learner</h3>
+                            <p id="dashEmail">learner@codecanvas.edu</p>
+                            <div class="profile-stats"><div><strong id="dashEnrolled">0</strong><span>Enrolled</span></div><div><strong id="dashCompleted">0</strong><span>Completed</span></div><div><strong id="dashBadges">0</strong><span>Badges</span></div></div>
+                        </div>
+                        <div class="sidebar-nav">
+                            <button class="sidebar-nav-btn active" data-dash-tab="overview"><i class="fas fa-th-large"></i> Overview</button>
+                            <button class="sidebar-nav-btn" data-dash-tab="enrolled"><i class="fas fa-bookmark"></i> Enrolled Courses</button>
+                            <button class="sidebar-nav-btn" data-dash-tab="recent"><i class="fas fa-clock"></i> Recently Viewed</button>
+                            <button class="sidebar-nav-btn" data-dash-tab="certificates"><i class="fas fa-certificate"></i> Certificates</button>
+                            <button class="sidebar-nav-btn" data-dash-tab="settings"><i class="fas fa-cog"></i> Settings</button>
+                        </div>
+                    </aside>
+                    <div class="dashboard-main">
+                        <div class="dash-tab active" id="dashTabOverview">
+                            <div class="overview-hero">
+                                <h2>📊 Learning Overview</h2>
+                                <div class="overview-stats">
+                                    <div class="overview-stat-card">
+                                        <span class="stat-number" id="dashEnrolled2">0</span>
+                                        <span class="stat-label">Enrolled</span>
+                                    </div>
+                                    <div class="overview-stat-card">
+                                        <span class="stat-number" id="dashCompleted2">0</span>
+                                        <span class="stat-label">Completed</span>
+                                    </div>
+                                    <div class="overview-stat-card">
+                                        <span class="stat-number" id="dashBadges2">0</span>
+                                        <span class="stat-label">Badges</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <h3>Course Progress</h3>
+                            <div class="progress-cards" id="progressCards"></div>
+                            <h3 style="margin-top:2rem;">🏆 Achievements</h3>
+                            <div class="badges-grid" id="badgesGrid"></div>
+                        </div>
+                        <div class="dash-tab" id="dashTabEnrolled"><h3>📌 Enrolled Courses</h3><div id="enrolledCoursesList"><p class="empty-state">No enrolled courses yet. <a href="#" onclick="navigateTo('courses')">Browse courses</a></p></div></div>
+                        <div class="dash-tab" id="dashTabRecent"><h3>🕐 Recently Viewed</h3><div id="recentCoursesList"><p class="empty-state">No recently viewed courses.</p></div></div>
+                        <div class="dash-tab" id="dashTabCertificates"><h3>📜 Certificates</h3><div id="certificatesList"><p class="empty-state">Complete courses to earn certificates.</p></div></div>
+                        <div class="dash-tab" id="dashTabSettings">
+                            <div class="settings-header" style="margin-bottom: 2rem;">
+                                <h3 style="font-size: 1.8rem; display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.5rem;"><i class="fas fa-user-cog" style="color: var(--primary);"></i> Account Settings</h3>
+                                <p style="color: var(--text-muted); font-size: 0.95rem;">Manage your personal information and dashboard preferences.</p>
+                            </div>
+                            
+                            <div class="settings-card" style="background: var(--bg-secondary); border-radius: var(--radius-lg); padding: 2.5rem; border: 1px solid var(--border); box-shadow: var(--shadow);">
+                                <form id="profileSettingsForm">
+                                    <div class="settings-section">
+                                        <h4 style="margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 0.8rem; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;"><i class="fas fa-id-card" style="color: var(--text-muted);"></i> Profile Information</h4>
+                                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;">
+                                            <div class="settings-group">
+                                                <label style="display: block; margin-bottom: 0.6rem; font-weight: 600; font-size: 0.9rem; color: var(--text);">Full Name</label>
+                                                <div class="input-group" style="margin-bottom: 0;">
+                                                    <input type="text" id="settingName" placeholder="Enter your full name">
+                                                    <i class="fas fa-user"></i>
+                                                </div>
+                                            </div>
+                                            <div class="settings-group">
+                                                <label style="display: block; margin-bottom: 0.6rem; font-weight: 600; font-size: 0.9rem; color: var(--text);">Email Address</label>
+                                                <div class="input-group" style="margin-bottom: 0;">
+                                                    <input type="email" id="settingEmail" placeholder="your@email.com">
+                                                    <i class="fas fa-envelope"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="settings-section">
+                                        <h4 style="margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 0.8rem; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;"><i class="fas fa-sliders-h" style="color: var(--text-muted);"></i> Preferences</h4>
+                                        <div style="display: grid; gap: 1.2rem; margin-bottom: 2.5rem;">
+                                            <label class="preference-item" style="display: flex; align-items: center; justify-content: space-between; padding: 1.2rem; background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;">
+                                                <div style="flex: 1;">
+                                                    <strong style="display: block; margin-bottom: 0.3rem;">Email Notifications</strong>
+                                                    <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Receive updates about new courses, tasks, and community events.</p>
+                                                </div>
+                                                <div class="toggle-container" style="margin-left: 1rem;">
+                                                    <input type="checkbox" class="modern-toggle" checked>
+                                                </div>
+                                            </label>
+                                            
+                                            <label class="preference-item" style="display: flex; align-items: center; justify-content: space-between; padding: 1.2rem; background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;">
+                                                <div style="flex: 1;">
+                                                    <strong style="display: block; margin-bottom: 0.3rem;">Public Profile Visibility</strong>
+                                                    <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Allow other learners to see your achievements and completed courses.</p>
+                                                </div>
+                                                <div class="toggle-container" style="margin-left: 1rem;">
+                                                    <input type="checkbox" class="modern-toggle">
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="settings-actions" style="display: flex; justify-content: flex-end; gap: 1rem; border-top: 1px solid var(--border); padding-top: 2rem;">
+                                        <button type="button" class="btn-outline-lg" style="padding: 0.7rem 1.8rem;" onclick="document.getElementById('profileSettingsForm').reset();">Cancel</button>
+                                        <button type="submit" class="btn-primary-lg" style="padding: 0.7rem 2.2rem; background: linear-gradient(135deg, var(--primary), #4f46e5);"><i class="fas fa-save"></i> Save Changes</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Contact Modal (Modern & Attractive) -->
+    <div class="modal-overlay" id="contactModalOverlay">
+        <div class="contact-modal-container">
+            <div class="contact-modal-header">
+                <h3><i class="fas fa-paper-plane" style="margin-right:0.5rem;"></i> Get in Touch</h3>
+                <button class="btn-close-modal" onclick="closeContactModal()">&times;</button>
+            </div>
+            <div class="contact-grid">
+                <div class="input-group">
+                    <input type="text" id="contactFirstName" placeholder="First Name *" required>
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="contactLastName" placeholder="Last Name *" required>
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="input-group full">
+                    <input type="tel" id="contactMobile" placeholder="Mobile Number">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <div class="input-group full">
+                    <input type="email" id="contactEmail" placeholder="Email Address *" required>
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="input-group full" style="position:relative;">
+                    <textarea id="contactMessage" class="contact-message" placeholder="Write your message here..." required></textarea>
+                    <i class="fas fa-comment-dots" style="position:absolute; left:16px; top:20px; color:var(--text-muted);"></i>
+                </div>
+            </div>
+            <button class="contact-submit-btn" id="submitContactBtn">Send Message</button>
+        </div>
+    </div>
+
+    <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+    <button class="back-to-top" id="backToTopBtn" aria-label="Back to top" title="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+    <footer class="footer-enhanced" role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-brand"><div class="logo" style="margin-bottom:1rem;"><span class="logo-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="var(--primary)"/><text x="16" y="22" text-anchor="middle" fill="white" font-family="'Space Grotesk', monospace" font-weight="700" font-size="14">CC</text></svg></span><span class="logo-text" style="color:white;">CodeCanvas</span></div><p>Aesthetic deep-dive into computer science. Learn by doing.</p><div class="social-links"><a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a><a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a><a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a></div></div>
+                <div class="footer-col"><h4>Explore</h4><a href="#" onclick="navigateTo('courses')">Courses</a><a href="#" onclick="document.getElementById('aboutSection').scrollIntoView();">About Us</a><a href="#" onclick="navigateTo('dashboard')">Dashboard</a><a href="#" onclick="document.getElementById('faqSection').scrollIntoView();">FAQ</a></div>
+                <div class="footer-col"><h4>Resources</h4><a href="#">Blog</a><a href="#">Community</a><a href="#">Documentation</a><a href="#">Support</a></div>
+                <div class="footer-col" id="footerContact"><h4>Contact</h4><p><i class="fas fa-map-marker-alt"></i> 22, Refugee Colony, Golmuri, Jamshedpur, Jharkhand</p><p><i class="fas fa-phone-alt"></i> +91 87657 09142</p><p><i class="fas fa-envelope"></i> shubham@codecanvas.edu</p></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2025 CodeCanvas — Premium e-learning platform. All rights reserved.</p></div>
+        </div>
+    </footer>
+
+    <script defer src="assets/script.js"></script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="CodeCanvas — A premium interactive computer science e-learning platform. Master DSA, OS, Networks, DBMS, AI & more with hands-on projects.">
+    <meta name="keywords" content="computer science, e-learning, coding, DSA, algorithms, AI, database, operating systems, networks, online courses">
+    <meta name="author" content="CodeCanvas">
+    <meta property="og:title" content="CodeCanvas | CS E-Learning Platform">
+    <meta property="og:description" content="Master computer science with interactive courses, projects, and assessments.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://images.pexels.com/photos/4491918/pexels-photo-4491918.jpeg">
+    <meta property="og:url" content="https://codecanvas.edu">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>CodeCanvas | Premium CS E-Learning</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <div class="loading-screen" id="loadingScreen" aria-hidden="true">
+        <div class="loading-logo">
+            <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                <rect width="60" height="60" rx="16" fill="var(--primary)" />
+                <text x="30" y="38" text-anchor="middle" fill="white" font-family="'Space Grotesk', monospace" font-weight="700" font-size="24">CC</text>
+            </svg>
+        </div>
+        <div class="loading-spinner"></div>
+        <p class="loading-text">Loading your learning space...</p>
+    </div>
+
+    <header class="navbar-sticky" id="navbarSticky" role="banner" aria-label="Main navigation">
+        <div class="container navbar-inner">
+            <a href="#" class="logo-link" aria-label="CodeCanvas Home" onclick="navigateTo('home')">
+                <div class="logo">
+                    <span class="logo-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <rect width="32" height="32" rx="8" fill="var(--primary)" />
+                            <text x="16" y="22" text-anchor="middle" fill="white" font-family="'Space Grotesk', monospace" font-weight="700" font-size="14">CC</text>
+                        </svg>
+                    </span>
+                    <span class="logo-text">CodeCanvas</span>
+                </div>
+            </a>
+            <nav class="nav-links" role="navigation" aria-label="Main links">
+                <a href="#" class="nav-link active" data-page="home" onclick="navigateTo('home')"><i class="fas fa-home"></i> Home</a>
+                <a href="#" class="nav-link" data-page="courses" onclick="navigateTo('courses')"><i class="fas fa-book-open"></i> Courses</a>
+                <a href="#" class="nav-link" data-page="dashboard" onclick="navigateTo('dashboard')"><i class="fas fa-chart-pie"></i> Dashboard</a>
+                <a href="#" class="nav-link nav-link-admin" data-page="admin" onclick="navigateTo('admin')"><i class="fas fa-shield-alt"></i> Admin</a>
+                <a href="#" class="nav-link" onclick="navigateTo('contact'); return false;"><i class="fas fa-envelope"></i> Contact Us</a>
+                <div class="nav-actions">
+                    <button class="btn-icon" id="themeToggle" aria-label="Toggle dark/light mode"><i class="fas fa-moon" id="themeIcon"></i></button>
+                    <button class="btn-icon notification-bell" id="notificationBell" aria-label="Notifications"><i class="fas fa-bell"></i><span class="notification-badge" id="notificationBadge">3</span></button>
+                    <div class="notification-dropdown" id="notificationDropdown">
+                        <div class="notification-header"><h4>Notifications</h4><button class="btn-text-sm" id="clearNotifications">Clear all</button></div>
+                        <div class="notification-list" id="notificationList">
+                            <div class="notification-item unread"><i class="fas fa-star"></i><span>Welcome! Start your first course.</span><small>Just now</small></div>
+                            <div class="notification-item unread"><i class="fas fa-trophy"></i><span>You earned a badge: Quick Starter!</span><small>2h ago</small></div>
+                            <div class="notification-item"><i class="fas fa-clock"></i><span>DSA course progress saved.</span><small>1d ago</small></div>
+                        </div>
+                    </div>
+                    <a href="#" class="btn-primary-sm" id="navLoginBtn" onclick="navigateTo('login'); return false;"><i class="fas fa-user-graduate"></i> Login</a>
+                    <span class="user-greeting" id="navUserGreeting" style="display:none;"></span>
+                </div>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <a href="#" onclick="navigateTo('home')">Home</a>
+        <a href="#" onclick="navigateTo('courses')">Courses</a>
+        <a href="#" onclick="navigateTo('dashboard')">Dashboard</a>
+        <a href="#" onclick="navigateTo('admin')">Admin</a>
+        <a href="#" onclick="closeMobileMenu(); navigateTo('contact');">Contact Us</a>
+        <a href="#" onclick="closeMobileMenu(); navigateTo('login');">Login / Sign Up</a>
+    </div>
+
+    <main id="mainContent" role="main">
+        <!-- COURSES PAGE -->
+        <section class="page-section page-courses" id="pageCourses">
+            <div class="container">
+                <div class="breadcrumb" aria-label="Breadcrumb"><a href="#" onclick="navigateTo('home')">Home</a> <span>/</span> <span>Courses</span></div>
+                <div class="section-header"><h2 class="section-title">📚 All Courses</h2>
+                    <div class="section-actions">
+                        <div class="search-box"><i class="fas fa-search"></i><input type="text" id="courseSearchInputFull" placeholder="Search courses..." aria-label="Search courses"></div>
+                        <select id="categoryFilterFull" aria-label="Filter by category"><option value="all">All Categories</option><option value="foundational">Foundational</option><option value="intermediate">Intermediate</option><option value="advanced">Advanced</option><option value="theoretical">Theoretical</option></select>
+                        <select id="sortFilterFull" aria-label="Sort courses"><option value="default">Sort: Default</option><option value="duration-asc">Duration: Shortest</option><option value="duration-desc">Duration: Longest</option><option value="level">Level: Beginner First</option></select>
+                    </div>
+                </div>
+                <div class="courses-grid" id="coursesContainerFull"></div>
+                <div class="no-results" id="noResultsFull" style="display:none;"><i class="fas fa-search" style="font-size:3rem;color:var(--text-muted);"></i><h3>No courses found</h3><p>Try adjusting your search or filters.</p></div>
+            </div>
+        </section>
+
+        <!-- SUBJECT DETAIL PAGE -->
+        <section class="page-section page-subject-detail" id="pageSubjectDetail">
+            <div class="container">
+                <div class="breadcrumb" id="subjectBreadcrumb"></div>
+                <div id="subjectDetailContent"></div>
+            </div>
+        </section>
+
+        <!-- LESSON DETAIL PAGE -->
+        <section class="page-section page-lesson-detail" id="pageLessonDetail">
+            <div class="container">
+                <div class="breadcrumb" id="lessonBreadcrumb"></div>
+                <div id="lessonDetailContent"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Contact Modal (Modern & Attractive) -->
+    <div class="modal-overlay" id="contactModalOverlay">
+        <div class="contact-modal-container">
+            <div class="contact-modal-header">
+                <h3><i class="fas fa-paper-plane" style="margin-right:0.5rem;"></i> Get in Touch</h3>
+                <button class="btn-close-modal" onclick="closeContactModal()">&times;</button>
+            </div>
+            <div class="contact-grid">
+                <div class="input-group">
+                    <input type="text" id="contactFirstName" placeholder="First Name *" required>
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="contactLastName" placeholder="Last Name *" required>
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="input-group full">
+                    <input type="tel" id="contactMobile" placeholder="Mobile Number">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <div class="input-group full">
+                    <input type="email" id="contactEmail" placeholder="Email Address *" required>
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="input-group full" style="position:relative;">
+                    <textarea id="contactMessage" class="contact-message" placeholder="Write your message here..." required></textarea>
+                    <i class="fas fa-comment-dots" style="position:absolute; left:16px; top:20px; color:var(--text-muted);"></i>
+                </div>
+            </div>
+            <button class="contact-submit-btn" id="submitContactBtn">Send Message</button>
+        </div>
+    </div>
+
+    <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+    <button class="back-to-top" id="backToTopBtn" aria-label="Back to top" title="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+    <footer class="footer-enhanced" role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-brand"><div class="logo" style="margin-bottom:1rem;"><span class="logo-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="var(--primary)"/><text x="16" y="22" text-anchor="middle" fill="white" font-family="'Space Grotesk', monospace" font-weight="700" font-size="14">CC</text></svg></span><span class="logo-text" style="color:white;">CodeCanvas</span></div><p>Aesthetic deep-dive into computer science. Learn by doing.</p><div class="social-links"><a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a><a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a><a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a></div></div>
+                <div class="footer-col"><h4>Explore</h4><a href="#" onclick="navigateTo('courses')">Courses</a><a href="#" onclick="document.getElementById('aboutSection').scrollIntoView();">About Us</a><a href="#" onclick="navigateTo('dashboard')">Dashboard</a><a href="#" onclick="document.getElementById('faqSection').scrollIntoView();">FAQ</a></div>
+                <div class="footer-col"><h4>Resources</h4><a href="#">Blog</a><a href="#">Community</a><a href="#">Documentation</a><a href="#">Support</a></div>
+                <div class="footer-col" id="footerContact"><h4>Contact</h4><p><i class="fas fa-map-marker-alt"></i> 22, Refugee Colony, Golmuri, Jamshedpur, Jharkhand</p><p><i class="fas fa-phone-alt"></i> +91 87657 09142</p><p><i class="fas fa-envelope"></i> shubham@codecanvas.edu</p></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2025 CodeCanvas — Premium e-learning platform. All rights reserved.</p></div>
+        </div>
+    </footer>
+
+    <script defer src="assets/script.js"></script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Contact CodeCanvas — Get in touch with our team for premium interactive computer science e-learning support.">
+    <title>Contact Us | CodeCanvas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+    <div class="loading-screen" id="loadingScreen" aria-hidden="true">
+        <div class="loading-logo">
+            <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                <rect width="60" height="60" rx="16" fill="var(--primary)" />
+                <text x="30" y="38" text-anchor="middle" fill="white" font-family="'Space Grotesk', monospace" font-weight="700" font-size="24">CC</text>
+            </svg>
+        </div>
+        <div class="loading-spinner"></div>
+    </div>
+
+    <header class="navbar-sticky" id="navbarSticky" role="banner" aria-label="Main navigation">
+        <div class="container navbar-inner">
+            <a href="#" class="logo-link" aria-label="CodeCanvas Home" onclick="navigateTo('home')">
+                <div class="logo">
+                    <span class="logo-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <rect width="32" height="32" rx="8" fill="var(--primary)" />
+                            <text x="16" y="22" text-anchor="middle" fill="white" font-family="'Space Grotesk', monospace" font-weight="700" font-size="14">CC</text>
+                        </svg>
+                    </span>
+                    <span class="logo-text">CodeCanvas</span>
+                </div>
+            </a>
+            <nav class="nav-links" role="navigation" aria-label="Main links">
+                <a href="#" class="nav-link" data-page="home" onclick="navigateTo('home')"><i class="fas fa-home"></i> Home</a>
+                <a href="#" class="nav-link" data-page="courses" onclick="navigateTo('courses')"><i class="fas fa-book-open"></i> Courses</a>
+                <a href="#" class="nav-link" data-page="dashboard" onclick="navigateTo('dashboard')"><i class="fas fa-chart-pie"></i> Dashboard</a>
+                <a href="#" class="nav-link nav-link-admin" data-page="admin" onclick="navigateTo('admin')"><i class="fas fa-shield-alt"></i> Admin</a>
+                <a href="#" class="nav-link active" data-page="contact" onclick="navigateTo('contact'); return false;"><i class="fas fa-envelope"></i> Contact Us</a>
+                <div class="nav-actions">
+                    <button class="btn-icon" id="themeToggle" aria-label="Toggle dark/light mode"><i class="fas fa-moon" id="themeIcon"></i></button>
+                    <button class="btn-icon notification-bell" id="notificationBell" aria-label="Notifications"><i class="fas fa-bell"></i><span class="notification-badge" id="notificationBadge">3</span></button>
+                    <div class="notification-dropdown" id="notificationDropdown">
+                        <div class="notification-header">
+                            <h4>Notifications</h4><button class="btn-text-sm" id="clearNotifications">Clear all</button>
+                        </div>
+                        <div class="notification-list" id="notificationList">
+                            <div class="notification-item unread"><i class="fas fa-star"></i><span>Welcome! Start your first course.</span><small>Just now</small></div>
+                        </div>
+                    </div>
+                    <a href="#" class="btn-primary-sm" id="navLoginBtn" onclick="navigateTo('login'); return false;"><i class="fas fa-user-graduate"></i> Login</a>
+                    <span class="user-greeting" id="navUserGreeting" style="display:none;"></span>
+                </div>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <a href="#" onclick="navigateTo('home')">Home</a>
+        <a href="#" onclick="navigateTo('courses')">Courses</a>
+        <a href="#" onclick="navigateTo('dashboard')">Dashboard</a>
+        <a href="#" onclick="navigateTo('admin')">Admin</a>
+        <a href="#" onclick="closeMobileMenu(); navigateTo('contact');">Contact Us</a>
+        <a href="#" onclick="closeMobileMenu(); navigateTo('login');">Login / Sign Up</a>
+    </div>
+
+    <main id="mainContent" role="main">
+        <section class="page-section page-contact active" id="pageContact" style="padding-top: 4rem; padding-bottom: 6rem;">
+            <div class="container">
+                <div class="breadcrumb" aria-label="Breadcrumb" style="margin-bottom: 2rem;">
+                    <a href="#" onclick="navigateTo('home')">Home</a> <span>/</span> <span>Contact Us</span>
+                </div>
+                
+                <div style="text-align: center; margin-bottom: 4rem;">
+                    <h1 style="font-size: 3rem; font-family: 'Space Grotesk', sans-serif; margin-bottom: 1rem;"><span class="gradient-text">Let's Connect</span></h1>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto;">Have a question about our courses, premium plans, or need technical support? We'd love to hear from you. Drop us a message below.</p>
+                </div>
+
+                <div style="display: flex; flex-wrap: wrap; gap: 3rem; align-items: flex-start;">
+                    
+                    <!-- Contact Info Side -->
+                    <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div style="background: var(--bg-secondary); border: 1px solid var(--border); padding: 2rem; border-radius: var(--radius-lg); display: flex; align-items: center; gap: 1.5rem; transition: transform 0.3s, box-shadow 0.3s; cursor: default;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='var(--shadow)'" onmouseout="this.style.transform='none'; this.style.boxShadow='none'">
+                            <div style="width: 60px; height: 60px; background: rgba(99, 102, 241, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--primary);">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h3 style="margin-bottom: 0.2rem; font-size: 1.2rem;">Our Headquarters</h3>
+                                <p style="color: var(--text-muted); margin: 0;">22, Refugee Colony<br>Golmuri, Jamshedpur, Jharkhand.</p>
+                            </div>
+                        </div>
+
+                        <div style="background: var(--bg-secondary); border: 1px solid var(--border); padding: 2rem; border-radius: var(--radius-lg); display: flex; align-items: center; gap: 1.5rem; transition: transform 0.3s, box-shadow 0.3s; cursor: default;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='var(--shadow)'" onmouseout="this.style.transform='none'; this.style.boxShadow='none'">
+                            <div style="width: 60px; height: 60px; background: rgba(16, 185, 129, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: #10b981;">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h3 style="margin-bottom: 0.2rem; font-size: 1.2rem;">Email Us</h3>
+                                <p style="color: var(--text-muted); margin: 0;">shubham@codecanvas.edu<br>support@codecanvas.edu</p>
+                            </div>
+                        </div>
+
+                        <div style="background: var(--bg-secondary); border: 1px solid var(--border); padding: 2rem; border-radius: var(--radius-lg); display: flex; align-items: center; gap: 1.5rem; transition: transform 0.3s, box-shadow 0.3s; cursor: default;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='var(--shadow)'" onmouseout="this.style.transform='none'; this.style.boxShadow='none'">
+                            <div style="width: 60px; height: 60px; background: rgba(245, 158, 11, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: #f59e0b;">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <h3 style="margin-bottom: 0.2rem; font-size: 1.2rem;">Call Us</h3>
+                                <p style="color: var(--text-muted); margin: 0;">+91 87657 09142<br>Mon-Fri, 9am - 6pm IST</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form Side -->
+                    <div style="flex: 1.5; min-width: 300px; background: var(--bg-secondary); border: 1px solid var(--border); padding: 3rem; border-radius: var(--radius-lg); box-shadow: var(--shadow);">
+                        <h2 style="margin-bottom: 2rem; font-size: 1.8rem; display: flex; align-items: center; gap: 0.5rem;"><i class="fas fa-paper-plane" style="color: var(--primary);"></i> Send a Message</h2>
+                        <div class="contact-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                            <div class="input-group" style="margin: 0;">
+                                <input type="text" id="contactFirstName" placeholder="First Name *" required style="width: 100%; padding: 1rem 1rem 1rem 3rem; border: 1px solid var(--border); border-radius: 12px; background: var(--card-bg); color: var(--text);">
+                                <i class="fas fa-user" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+                            </div>
+                            <div class="input-group" style="margin: 0;">
+                                <input type="text" id="contactLastName" placeholder="Last Name *" required style="width: 100%; padding: 1rem 1rem 1rem 3rem; border: 1px solid var(--border); border-radius: 12px; background: var(--card-bg); color: var(--text);">
+                                <i class="fas fa-user" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+                            </div>
+                            <div class="input-group" style="margin: 0; grid-column: 1 / -1;">
+                                <input type="tel" id="contactMobile" placeholder="Mobile Number" style="width: 100%; padding: 1rem 1rem 1rem 3rem; border: 1px solid var(--border); border-radius: 12px; background: var(--card-bg); color: var(--text);">
+                                <i class="fas fa-mobile-alt" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+                            </div>
+                            <div class="input-group" style="margin: 0; grid-column: 1 / -1;">
+                                <input type="email" id="contactEmail" placeholder="Email Address *" required style="width: 100%; padding: 1rem 1rem 1rem 3rem; border: 1px solid var(--border); border-radius: 12px; background: var(--card-bg); color: var(--text);">
+                                <i class="fas fa-envelope" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+                            </div>
+                            <div class="input-group" style="margin: 0; grid-column: 1 / -1; position: relative;">
+                                <textarea id="contactMessage" placeholder="How can we help you? *" required style="width: 100%; padding: 1rem 1rem 1rem 3rem; border: 1px solid var(--border); border-radius: 12px; background: var(--card-bg); color: var(--text); min-height: 150px; resize: vertical; font-family: inherit;"></textarea>
+                                <i class="fas fa-comment-dots" style="position: absolute; left: 1rem; top: 1.2rem; color: var(--text-muted);"></i>
+                            </div>
+                            <div style="grid-column: 1 / -1; margin-top: 1rem;">
+                                <button type="button" id="submitContactBtn" class="btn-primary-lg" style="width: 100%; padding: 1rem; font-size: 1.1rem; background: linear-gradient(135deg, var(--primary), #4f46e5); border: none; border-radius: 12px; color: white; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='var(--shadow)'" onmouseout="this.style.transform='none'; this.style.boxShadow='none'">
+                                    <i class="fas fa-paper-plane"></i> Send Message
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+    <button class="back-to-top" id="backToTopBtn" aria-label="Back to top" title="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+    <footer class="footer-enhanced" role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-brand">
+                    <div class="logo" style="margin-bottom:1rem;"><span class="logo-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="var(--primary)" /><text x="16" y="22" text-anchor="middle" fill="white" font-family="'Space Grotesk', monospace" font-weight="700" font-size="14">CC</text></svg></span><span class="logo-text" style="color:white;">CodeCanvas</span></div>
+                    <p>Aesthetic deep-dive into computer science. Learn by doing.</p>
+                    <div class="social-links"><a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a><a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a><a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a></div>
+                </div>
+                <div class="footer-col">
+                    <h4>Explore</h4><a href="#" onclick="navigateTo('courses')">Courses</a><a href="#" onclick="navigateTo('home')">About Us</a><a href="#" onclick="navigateTo('dashboard')">Dashboard</a><a href="#" onclick="navigateTo('home')">FAQ</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4><a href="#">Blog</a><a href="#">Community</a><a href="#">Documentation</a><a href="#">Support</a>
+                </div>
+                <div class="footer-col" id="footerContact">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> 22, Refugee Colony, Golmuri, Jamshedpur, Jharkhand</p>
+                    <p><i class="fas fa-phone-alt"></i> +91 87657 09142</p>
+                    <p><i class="fas fa-envelope"></i> shubham@codecanvas.edu</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 CodeCanvas — Premium e-learning platform. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script defer src="assets/script.js"></script>
+</body>
+
+</html>
+
