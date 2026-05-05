@@ -119,33 +119,34 @@
                     <!-- Contact Form Side -->
                     <div style="flex: 1.5; min-width: 300px; background: var(--bg-secondary); border: 1px solid var(--border); padding: 3rem; border-radius: var(--radius-lg); box-shadow: var(--shadow);">
                         <h2 style="margin-bottom: 2rem; font-size: 1.8rem; display: flex; align-items: center; gap: 0.5rem;"><i class="fas fa-paper-plane" style="color: var(--primary);"></i> Send a Message</h2>
-                        <div class="contact-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                        <form action="https://api.web3forms.com/submit" method="POST" class="contact-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                            <input type="hidden" name="access_key" value="b0237e87-5739-4aad-99a9-204985d40572">
                             <div class="input-group" style="margin: 0;">
-                                <input type="text" id="contactFirstName" placeholder="First Name *" required style="width: 100%; padding: 1rem 1rem 1rem 3rem; border: 1px solid var(--border); border-radius: 12px; background: var(--card-bg); color: var(--text);">
+                                <input type="text" id="contactFirstName" name="First Name" placeholder="First Name *" required style="width: 100%; padding: 1rem 1rem 1rem 3rem; border: 1px solid var(--border); border-radius: 12px; background: var(--card-bg); color: var(--text);">
                                 <i class="fas fa-user" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
                             </div>
                             <div class="input-group" style="margin: 0;">
-                                <input type="text" id="contactLastName" placeholder="Last Name *" required style="width: 100%; padding: 1rem 1rem 1rem 3rem; border: 1px solid var(--border); border-radius: 12px; background: var(--card-bg); color: var(--text);">
+                                <input type="text" id="contactLastName" name="Last Name" placeholder="Last Name *" required style="width: 100%; padding: 1rem 1rem 1rem 3rem; border: 1px solid var(--border); border-radius: 12px; background: var(--card-bg); color: var(--text);">
                                 <i class="fas fa-user" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
                             </div>
                             <div class="input-group" style="margin: 0; grid-column: 1 / -1;">
-                                <input type="tel" id="contactMobile" placeholder="Mobile Number" style="width: 100%; padding: 1rem 1rem 1rem 3rem; border: 1px solid var(--border); border-radius: 12px; background: var(--card-bg); color: var(--text);">
+                                <input type="tel" id="contactMobile" name="Mobile" placeholder="Mobile Number" style="width: 100%; padding: 1rem 1rem 1rem 3rem; border: 1px solid var(--border); border-radius: 12px; background: var(--card-bg); color: var(--text);">
                                 <i class="fas fa-mobile-alt" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
                             </div>
                             <div class="input-group" style="margin: 0; grid-column: 1 / -1;">
-                                <input type="email" id="contactEmail" placeholder="Email Address *" required style="width: 100%; padding: 1rem 1rem 1rem 3rem; border: 1px solid var(--border); border-radius: 12px; background: var(--card-bg); color: var(--text);">
+                                <input type="email" id="contactEmail" name="email" placeholder="Email Address *" required style="width: 100%; padding: 1rem 1rem 1rem 3rem; border: 1px solid var(--border); border-radius: 12px; background: var(--card-bg); color: var(--text);">
                                 <i class="fas fa-envelope" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
                             </div>
                             <div class="input-group" style="margin: 0; grid-column: 1 / -1; position: relative;">
-                                <textarea id="contactMessage" placeholder="How can we help you? *" required style="width: 100%; padding: 1rem 1rem 1rem 3rem; border: 1px solid var(--border); border-radius: 12px; background: var(--card-bg); color: var(--text); min-height: 150px; resize: vertical; font-family: inherit;"></textarea>
+                                <textarea id="contactMessage" name="message" placeholder="How can we help you? *" required style="width: 100%; padding: 1rem 1rem 1rem 3rem; border: 1px solid var(--border); border-radius: 12px; background: var(--card-bg); color: var(--text); min-height: 150px; resize: vertical; font-family: inherit;"></textarea>
                                 <i class="fas fa-comment-dots" style="position: absolute; left: 1rem; top: 1.2rem; color: var(--text-muted);"></i>
                             </div>
                             <div style="grid-column: 1 / -1; margin-top: 1rem;">
-                                <button type="button" id="submitContactBtn" class="btn-primary-lg" style="width: 100%; padding: 1rem; font-size: 1.1rem; background: linear-gradient(135deg, var(--primary), #4f46e5); border: none; border-radius: 12px; color: white; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='var(--shadow)'" onmouseout="this.style.transform='none'; this.style.boxShadow='none'">
+                                <button type="submit" class="btn-primary-lg" style="width: 100%; padding: 1rem; font-size: 1.1rem; background: linear-gradient(135deg, var(--primary), #4f46e5); border: none; border-radius: 12px; color: white; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='var(--shadow)'" onmouseout="this.style.transform='none'; this.style.boxShadow='none'">
                                     <i class="fas fa-paper-plane"></i> Send Message
                                 </button>
                             </div>
-                        </div>
+                        </form>
                     </div>
 
                 </div>
